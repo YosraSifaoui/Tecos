@@ -7,6 +7,7 @@ import {
     TableCell,
     Icon,
     TablePagination,
+    Tooltip
 } from '@mui/material'
 import React from 'react'
 import { Box, styled } from '@mui/system'
@@ -35,63 +36,54 @@ const subscribarList = [
     {
         name: 'john doe',
         date: '18 january, 2019',
-        amount: 1000,
         status: 'close',
         company: 'ABC Fintech LTD.',
     },
     {
         name: 'kessy bryan',
         date: '10 january, 2019',
-        amount: 9000,
         status: 'open',
         company: 'My Fintech LTD.',
     },
     {
         name: 'kessy bryan',
         date: '10 january, 2019',
-        amount: 9000,
         status: 'open',
         company: 'My Fintech LTD.',
     },
     {
         name: 'james cassegne',
         date: '8 january, 2019',
-        amount: 5000,
         status: 'close',
         company: 'Collboy Tech LTD.',
     },
     {
         name: 'lucy brown',
         date: '1 january, 2019',
-        amount: 89000,
         status: 'open',
         company: 'ABC Fintech LTD.',
     },
     {
         name: 'lucy brown',
         date: '1 january, 2019',
-        amount: 89000,
         status: 'open',
         company: 'ABC Fintech LTD.',
     },
     {
         name: 'lucy brown',
         date: '1 january, 2019',
-        amount: 89000,
         status: 'open',
         company: 'ABC Fintech LTD.',
     },
     {
         name: 'lucy brown',
         date: '1 january, 2019',
-        amount: 89000,
         status: 'open',
         company: 'ABC Fintech LTD.',
     },
     {
         name: 'lucy brown',
         date: '1 january, 2019',
-        amount: 89000,
         status: 'open',
         company: 'ABC Fintech LTD.',
     },
@@ -115,11 +107,10 @@ const PaginationTable = () => {
             <StyledTable>
                 <TableHead>
                     <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Company</TableCell>
-                        <TableCell>Start Date</TableCell>
+                        <TableCell>State</TableCell>
+                        <TableCell>NBCC</TableCell>
+                        <TableCell>Comments</TableCell>
                         <TableCell>Status</TableCell>
-                        <TableCell>Amount</TableCell>
                         <TableCell>Action</TableCell>
                     </TableRow>
                 </TableHead>
@@ -141,11 +132,23 @@ const PaginationTable = () => {
                                     {subscriber.date}
                                 </TableCell>
                                 <TableCell>{subscriber.status}</TableCell>
-                                <TableCell>${subscriber.amount}</TableCell>
                                 <TableCell>
+                                <Tooltip title="Dispaly" placement="top">
+
                                     <IconButton>
-                                        <Icon color="error">close</Icon>
+                                        <Icon >visibility</Icon>
                                     </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="Edit" placement="top">
+                                    <IconButton>
+                                        <Icon >edit</Icon>
+                                    </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="Remove" placement="top">
+                                    <IconButton>
+                                        <Icon >delete</Icon>
+                                    </IconButton>
+                                    </Tooltip>
                                 </TableCell>
                             </TableRow>
                         ))}

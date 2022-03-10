@@ -3,6 +3,11 @@ import { Redirect } from 'react-router-dom'
 import chartsRoute from './views/charts/ChartsRoute'
 import dashboardRoutes from './views/dashboard/DashboardRoutes'
 import materialRoutes from './views/material-kit/MaterialRoutes'
+import ficheRoutes from './views/Fiche/FicheRoutes'
+import listRoutes from './views/List/ListRoutes'
+import organisationRoutes from './views/Organisation/ListOrganisation'
+
+
 
 const redirectRoute = [
     {
@@ -22,6 +27,9 @@ const routes = [
     ...dashboardRoutes,
     ...materialRoutes,
     ...chartsRoute,
+    ...listRoutes,
+    ...ficheRoutes,
+    ...organisationRoutes,
     ...redirectRoute,
     ...errorRoute,
 ]

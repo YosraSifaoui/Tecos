@@ -40,12 +40,12 @@ const Heading = styled('h6')(({ theme }) => ({
 const StatCards = () => {
     return (
         <Grid container spacing={3} sx={{ mb: '24px' }}>
-            <Grid item xs={12} md={6}>
-                <StyledCard elevation={6}>
+            <Grid item xs={12} md={4}>
+                <StyledCard elevation={4}>
                     <ContentBox>
-                        <Icon className="icon">group</Icon>
+                        <Icon className="icon">reorder</Icon>
                         <Box ml="12px">
-                            <Small>New Leads</Small>
+                            <Small>Total operations</Small>
                             <Heading>3050</Heading>
                         </Box>
                     </ContentBox>
@@ -56,13 +56,13 @@ const StatCards = () => {
                     </Tooltip>
                 </StyledCard>
             </Grid>
-            <Grid item xs={12} md={6}>
-                <StyledCard elevation={6}>
+            <Grid item xs={12} md={4}>
+                <StyledCard elevation={4}>
                     <ContentBox>
-                        <Icon className="icon">attach_money</Icon>
+                        <Icon className="icon">report_problem</Icon>
                         <Box ml="12px">
-                            <Small sx={{ lineHeight: 1 }}>
-                                This week Sales
+                        <Small sx={{ lineHeight: 1 }}>
+                        Failed operations
                             </Small>
                             <Heading>$80,500</Heading>
                         </Box>
@@ -74,13 +74,15 @@ const StatCards = () => {
                     </Tooltip>
                 </StyledCard>
             </Grid>
-            <Grid item xs={12} md={6}>
-                <StyledCard elevation={6}>
+            <Grid item xs={12} md={4}>
+                <StyledCard elevation={4}>
                     <ContentBox>
-                        <Icon className="icon">store</Icon>
+                        <Icon className="icon">playlist_add_check</Icon>
                         <Box ml="12px">
-                            <Small>Inventory Status</Small>
-                            <Heading>8.5% Stock Surplus</Heading>
+                            <Small sx={{ lineHeight: 1 }}>
+                            Passed operations
+                            </Small>
+                            <Heading>$80,500</Heading>
                         </Box>
                     </ContentBox>
                     <Tooltip title="View Details" placement="top">
@@ -90,22 +92,7 @@ const StatCards = () => {
                     </Tooltip>
                 </StyledCard>
             </Grid>
-            <Grid item xs={12} md={6}>
-                <StyledCard elevation={6}>
-                    <ContentBox>
-                        <Icon className="icon">shopping_cart</Icon>
-                        <Box ml="12px">
-                            <Small>Orders to deliver</Small>
-                            <Heading>305 Orders</Heading>
-                        </Box>
-                    </ContentBox>
-                    <Tooltip title="View Details" placement="top">
-                        <IconButton>
-                            <Icon>arrow_right_alt</Icon>
-                        </IconButton>
-                    </Tooltip>
-                </StyledCard>
-            </Grid>
+            
         </Grid>
     )
 }

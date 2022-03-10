@@ -1,74 +1,134 @@
-import React, { Fragment } from 'react'
-import RowCards from './shared/RowCards'
+import React, { Fragment,useState  } from 'react'
 import StatCards from './shared/StatCards'
-import Campaigns from './shared/Campaigns'
-import { Grid, Card } from '@mui/material'
-import StatCards2 from './shared/StatCards2'
-import DoughnutChart from './shared/Doughnut'
-import UpgradeCard from './shared/UpgradeCard'
+import PaginationTable from '../material-kit/tables/PaginationTable'
+import { Grid } from '@mui/material'
 import { styled, useTheme } from '@mui/system'
-import TopSellingTable from './shared/TopSellingTable'
+import ComparisonChart from 'app/views/cards/echarts/ComparisonChart'
+import SimpleCard from 'app/components/cards/SimpleCard'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Breadcrumb from 'app/components/Breadcrumb/Breadcrumb'
 
-const ContentBox = styled('div')(({ theme }) => ({
+const Container = styled('div')(({ theme }) => ({
     margin: '30px',
     [theme.breakpoints.down('sm')]: {
         margin: '16px',
     },
+    '& .breadcrumb': {
+        marginBottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px',
+        },
+    },
 }))
 
-const Title = styled('span')(() => ({
+const DateLabel = styled('span')(({type}) => ({
     fontSize: '1rem',
     fontWeight: '500',
     textTransform: 'capitalize',
+    marginLeft:'20px',
+    marginRight:'5px'
 }))
 
-const SubTitle = styled('span')(({ theme }) => ({
-    fontSize: '0.875rem',
-    color: theme.palette.text.secondary,
+const SearchFrom = styled('div')(({ theme }) => ({
+    display:'flex',
+
+}))
+const SearchTo = styled('div')(({ theme }) => ({
+    display:'flex',
+
 }))
 
-const H4 = styled('h4')(({ theme }) => ({
-    fontSize: '1rem',
-    fontWeight: '500',
-    marginBottom: '16px',
-    textTransform: 'capitalize',
-    color: theme.palette.text.secondary,
+const DateRow = styled('div')(({ theme }) => ({
+   display:'flex',
+   flexDirection:'row',
+   justifyContent:'flex-end',
+   marginBottom:'20px'
 }))
 
 const Analytics = () => {
     const { palette } = useTheme()
-
+    const theme = useTheme()
+    const [startDate, setStartDate] = useState(new Date());
+    const option = {
+    series: [
+        {
+            data: [30, 40, 20, 50, 40, 80, 90],
+            type: 'line',
+            stack: 'This month',
+            name: 'This month',
+            smooth: true,
+            symbolSize: 4,
+            lineStyle: {
+                width: 4,
+            },
+        },
+        {
+            data: [20, 50, 15, 50, 30, 70, 95],
+            type: 'line',
+            stack: 'Last month',
+            name: 'Last month',
+            smooth: true,
+            symbolSize: 4,
+            lineStyle: {
+                width: 4,
+            },
+        },
+    ]}
     return (
+        <Container>
+        <div className="breadcrumb">
+                <Breadcrumb
+                    routeSegments={[
+                        { name: 'Dashboard' },
+                    ]}
+                />
+            </div>
         <Fragment>
-            <ContentBox className="analytics">
-                <Grid container spacing={3}>
-                    <Grid item lg={8} md={8} sm={12} xs={12}>
-                        <StatCards />
-                        <TopSellingTable />
-                        <StatCards2 />
-                        <H4>Ongoing Projects</H4>
-                        <RowCards />
-                    </Grid>
+        
+            {/* <ContentBox className="analytics"> */}
 
-                    <Grid item lg={4} md={4} sm={12} xs={12}>
-                        <Card sx={{ px: 3, py: 2, mb: 3 }}>
-                            <Title>Traffic Sources</Title>
-                            <SubTitle>Last 30 days</SubTitle>
-                            <DoughnutChart
-                                height="300px"
-                                color={[
-                                    palette.primary.dark,
-                                    palette.primary.main,
-                                    palette.primary.light,
-                                ]}
-                            />
-                        </Card>
-                        <UpgradeCard />
-                        <Campaigns />
+                <Grid  spacing={3}>
+                    <Grid  >
+                        <StatCards />
+                        <SimpleCard title="Comparison Chart">
+                <ComparisonChart
+                 height="350px"
+                 option={{
+                    ...option,
+                    color : [
+                        theme.palette.primary.dark,
+                        // theme.palette.primary.main,
+                        theme.palette.primary.light,
+                    ]
+                }}
+                   
+                />
+            </SimpleCard>
+            
                     </Grid>
+<Grid  style={{marginTop:'20px'}}>
+<SimpleCard title="Racents operations">
+                <DateRow>
+                    <SearchFrom> 
+                    <DateLabel type="from">From</DateLabel>
+                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                    </SearchFrom>
+                    <SearchTo> 
+                    <DateLabel type="to">To</DateLabel>
+                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                    </SearchTo>
+                </DateRow>
+         <PaginationTable />
+     </SimpleCard> 
+</Grid>
                 </Grid>
-            </ContentBox>
+                
+            {/* </ContentBox> */}
+           
         </Fragment>
+        
+     </Container>
     )
 }
 
