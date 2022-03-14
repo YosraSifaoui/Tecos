@@ -19,7 +19,7 @@ export const navigations = [
         path: '/operation/List'
     },
     {
-        name: 'Organisation list',
+        name: 'User add page',
         icon: 'format_list_bulleted',
         path: '/organisation/List'
     },

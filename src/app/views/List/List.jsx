@@ -6,11 +6,12 @@ import StatCards from '../dashboard/shared/StatCards'
 import SimpleCard from 'app/components/cards/SimpleCard'
 import PaginationTable from '../material-kit/tables/PaginationTable'
 import SearchIcon from '@mui/icons-material/Search';
-import Select from '@mui/material/Select'
+// import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import InputBase from '@mui/material/InputBase';
 import InputLabel from '@mui/material/InputLabel'
-
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 import {
     Grid,
     FormControl,
@@ -88,7 +89,12 @@ const HeaderRow = styled('div')(({ theme }) => ({
 const List = () => {
     
     const [maxWidth, setMaxWidth] = React.useState('lg')
-   
+    const animatedComponents = makeAnimated();
+    const options = [
+      { value: 'chocolate', label: 'Chocolate' },
+      { value: 'strawberry', label: 'Strawberry' },
+      { value: 'vanilla', label: 'Vanilla' }
+    ]
     const handleChange = (file) => {
     };
     return (
@@ -153,23 +159,18 @@ const List = () => {
 <SimpleCard >
  <Grid item xs>
      <HeaderTable>
-     <FormControl fullWidth>
-        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+     {/* <FormControl fullWidth> */}
+        {/* <InputLabel variant="standard" htmlFor="uncontrolled-native">
           Filter
-        </InputLabel>
-        <NativeSelect
-          defaultValue={30}
-          style={{width:"30%"}}
-          inputProps={{
-            name: 'age',
-            id: 'uncontrolled-native',
-          }}
-        >
-          <option value={10}>Ten</option>
-          <option value={20}>Twenty</option>
-          <option value={30}>Thirty</option>
-        </NativeSelect>
-      </FormControl>
+        </InputLabel> */}
+        <Select
+      closeMenuOnSelect={false}
+      components={animatedComponents}
+      defaultValue={[options[4], options[5]]}
+      isMulti
+      options={options}
+    />
+      {/* </FormControl> */}
                            <DivSearch>
                            <Search>
             <SearchIconWrapper>

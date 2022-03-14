@@ -19,6 +19,7 @@ import {
     FormControl,
     TextField,
 } from '@mui/material'
+import FormAdd from './FormAdd'
 
 
 const Container = styled('div')(({ theme }) => ({
@@ -34,10 +35,10 @@ const Container = styled('div')(({ theme }) => ({
   },
 }))
 const Div = styled('div')(({ theme }) => ({
-    display:'flex',
-    flexDirection:'row',
-    padding:'20px 20px 20px 20px'
-    
+    // display:'flex',
+    // flexDirection:'row',
+    // width:'100%',
+    marginBottom:'20px'    
  }))
  const DivSearch = styled('div')(({ theme }) => ({ 
      flex:1,
@@ -107,46 +108,9 @@ const ListOrganisation = () => {
             </div>
         <Fragment>
           <Div>
-        <Grid container rowSpacing={6} columnSpacing={{ xs: 1, sm: 4, md: 3 }}>
-  <Grid item xs={3}>
-  <FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Organisation Name</InputLabel>
-  <Select
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
-    value="Organisation Name"
-    label="Organisation Name"
-    onChange={handleChange}
-  >
-    <MenuItem value={10}>Ten</MenuItem>
-    <MenuItem value={20}>Twenty</MenuItem>
-    <MenuItem value={30}>Thirty</MenuItem>
-  </Select>
-</FormControl>
-  </Grid>
-  {/* <DivLogin> */}
-  <Grid item xs={3}>
-   
-  <TextField id="outlined-basic" label="User name" variant="outlined" style={{alignSelf:'center'}} />
-                      </Grid>
-  <Grid item xs={3}>
-  <TextField
-          id="outlined-password-input"
-          label="Password"
-          type="password"
-          style={{marginLeft:"-49%"}}
-          // autoComplete="current-password"
-        />
-                      </Grid>
-                      {/* </DivLogin> */}
-  <Grid item xs={3}>
-  <Button color="primary" variant="contained" type="submit" style={{marginLeft:"-63%", width:"50%", marginTop:"10px"}}>
-                  <Span sx={{ pl: 1, textTransform: 'capitalize' }}>
-                      Submit
-                  </Span>
-              </Button>  
-              </Grid>
-</Grid>
+          <SimpleCard >
+            <FormAdd/>
+</SimpleCard>
 </Div>
 <SimpleCard >
  <Grid item xs>
